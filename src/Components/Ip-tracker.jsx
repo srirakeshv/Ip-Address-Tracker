@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import bgimage from "./pattern-bg-desktop.png";
 
 const IpTracker = () => {
   const [input, setInput] = useState("");
@@ -73,7 +74,7 @@ const IpTracker = () => {
       <div
         className="topbar"
         style={{
-          backgroundImage: "url('/Asset/images/pattern-bg-desktop.png')",
+          backgroundImage: `url('${bgimage}')`,
           backgroundPosition: "100%",
           backgroundSize: "100% 100%",
         }}
