@@ -52,6 +52,7 @@ body{
 }
 
 .informationbar{
+    margin-top: 25px;
     z-index: 10;
     display: flex;
     gap: 20px;
@@ -89,8 +90,16 @@ body{
     z-index: 0;
 }
 
-/* @media screen and (max-width: 580px) {
-    .informationbar{
-        flex-direction: column;
+@media screen and (max-width: 760px) {
+    .informationbar .info-last{
+        border-right: 1px solid rgba(128, 128, 128, 0.192);
     }
-} */
+}
+@media screen and (max-width: 415px) {
+    .informationbar div{
+        border-right: 0;
+    }
+    .informationbar{
+        text-align: center;
+    }
+}

@@ -20,9 +20,11 @@ const IpTracker = () => {
     console.log("Initializing map");
     if (!mapRef.current) {
       const mapInstance = L.map("map").setView([0, 0], 13);
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(
-        mapInstance
-      );
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 19,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }).addTo(mapInstance);
       setMap(mapInstance);
       mapRef.current = mapInstance; // Set the ref to the initialized map
     }
@@ -48,14 +50,14 @@ const IpTracker = () => {
 
     try {
       const apiKey = "at_hWTq4MJXWbrFHCaBIte9jqni8bCRF";
-      const apiUrl = `https://geo.ipify.org/api/v2/country?apiKey=${apiKey}&ipAddress=${ipAddress}`;
+      const apiUrl = `https://geo.ipify.org/api/v2/country,city?apiKey=at_hWTq4MJXWbrFHCaBIte9jqni8bCRF&ipAddress=${ipAddress}`;
 
       const reponse = await fetch(apiUrl);
       const data = await reponse.json();
       console.log(data);
       setIpInfo({
         ipAddress: data.ip,
-        ipLocation: `${data.location.region}, ${data.location.country}`,
+        ipLocation: `${data.location.city}, ${data.location.country}`,
         timezone: `UTC${data.location.timezone}`,
         isp: data.isp,
       });
